@@ -1,0 +1,501 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #1c1c1c; /* Cor de fundo */
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #ecf0f1;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza a transição */
+}
+
+.menu-item:hover {
+    background-color: #333;
+}
+
+.menu-item i {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Estilo para o item do menu ativo */
+.menu-item.active {
+    background-color: #3498db; /* Destaque de fundo */
+    color: #ffffff; /* Cor do texto e ícone */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.menu-item.active i {
+    color: #1abc9c; /* Cor verde para o ícone ativo */
+}
+
+/* Itens padrão (não ativos) */
+.menu-item:not(.active):hover {
+    color: #ecf0f1;
+}
+
+.logo h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.logo span {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.sidebar.minimized {
+    width: 60px; /* Reduzir a largura */
+    transition: width 0.3s ease; /* Transição suave */
+}
+
+.sidebar.minimized .menu-item span {
+    display: none; /* Ocultar o texto dos itens do menu */
+}
+
+.sidebar.minimized .logo h1 {
+    display: none; /* Ocultar o título */
+}
+
+.sidebar.minimized .logo button {
+    text-align: center;
+    width: 100%; /* Centralizar o botão de alternância */
+}
+
+/* Ajuste para os ícones no estado minimizado */
+.sidebar.minimized .menu-item i {
+    margin-right: 0; /* Remover o espaçamento do ícone */
+    text-align: center;
+    width: 100%; /* Centralizar os ícones */
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.page-header {
+    background-color: #2c3e50; /* Fundo escuro */
+    color: white; /* Texto branco */
+    padding: 15px 20px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    border-radius: 0px; /* Bordas arredondadas */
+    text-align: center; /* Centralizar o texto */
+}
+
+.page-header h1 {
+    margin: 0; /* Remover margem padrão */
+    font-size: 24px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os elementos */
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px; /* Largura máxima */
+    padding: 12px 15px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 14px;
+    display: flex;
+    align-items: center; /* Alinhamento de ícones */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+    outline: none;
+    background-color: white;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: white; /* Fundo branco */
+    padding: 10px; /* Espaçamento interno */
+    gap: 8px; /* Espaçamento entre o ícone e o texto */
+}
+
+.search-container i {
+    color: #333; /* Cor do ícone */
+    font-size: 18px; /* Tamanho do ícone */
+}
+
+.search-container input {
+    border: none; /* Remover borda padrão do input */
+    outline: none; /* Remover contorno no foco */
+    font-size: 14px; /* Tamanho do texto */
+    width: 100%; /* Ocupa todo o espaço disponível */
+}
+
+.search-bar:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center; /* Centralizar ícone e texto */
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: white; /* Fundo branco */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 14px;
+    color: #333; /* Texto escuro */
+    cursor: pointer;
+    gap: 8px; /* Espaçamento entre o ícone e o texto */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transição suave */
+}
+
+.filter-btn:hover {
+    background-color: #f7f7f7; /* Fundo mais claro no hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra no hover */
+}
+
+.filter-btn i,
+.search-bar i {
+    margin-right: 8px; /* Espaçamento do ícone */
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+.filter-btn i {
+    font-size: 18px; /* Tamanho do ícone */
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.data-table th {
+    background-color: #2c3e50; /* Fundo escuro */
+    color: white; /* Texto branco */
+    padding: 10px; /* Espaçamento interno */
+    text-align: left; /* Alinhamento do texto */
+    font-weight: bold; /* Texto em negrito */
+    border-bottom: 2px solid #ddd; /* Linha separadora */
+}
+
+/* Estilo para o corpo da tabela */
+.data-table td {
+    background-color: #f9f9f9; /* Fundo claro */
+    color: #333; /* Texto escuro */
+    padding: 8px; /* Espaçamento interno */
+    border-bottom: 1px solid #ddd; /* Linha separadora */
+}
+
+.table-footer {
+    display: flex;
+    justify-content: flex-start; /* Alinhamento à esquerda */
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px; /* Espaçamento entre os elementos */
+}
+
+.data-table tr:nth-child(even) td {
+    background-color: #f1f1f1; /* Fundo ligeiramente diferente para linhas pares */
+}
+
+.data-table tr:hover td {
+    background-color: #e2e2e2; /* Destaque ao passar o mouse */
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination span {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.pagination button:hover {
+    background-color: #2980b9;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Estilo do modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-content .filter-actions {
+    display: flex;
+    justify-content: flex-end; /* Botões alinhados à direita */
+    gap: 10px; /* Espaçamento entre botões */
+    margin-top: 20px;
+}
+
+.modal-content .clear-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.clear-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background-color: #c0392b;
+}
+
+.apply-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.apply-btn:hover {
+    background-color: #2980b9;
+}
+
+.modal-content .clear-btn:hover {
+    background-color: #c0392b;
+}
+
+.modal-content .apply-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content .apply-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Fechar botão */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    overflow-y: auto;
+    max-height: 200px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.dropdown-content input {
+    margin-right: 8px;
+}
+
+.dropdown-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-btn:hover {
+    background-color: #2980b9;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostrar ao passar o mouse */
+}
+
+/* Estilo para exibir os itens selecionados */
+#selected-items {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#selected-items h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+#selected-items div {
+    margin-bottom: 10px;
+}
+
+#selected-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#selected-items li {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 3px;
+    font-size: 14px;
+    cursor: default;
+}
+
+#selected-items li:hover {
+    background-color: #2980b9;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    gap: 8px;
+}

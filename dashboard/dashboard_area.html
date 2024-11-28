@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Área</title>
+    <link rel="stylesheet" href="dashboard_area.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <div class="container">
+            <!-- Menu lateral -->
+            <nav class="sidebar">
+                <div class="logo">
+                    <h1>Sebrae AM</h1>
+                    
+                </div>
+                <ul>
+                    <li class="menu-item" data-link="..\tabela_area.html">
+                        <i class="fas fa-table"></i>
+                        <span>Tabela Área</span>
+                    </li>
+                    <li class="menu-item" data-link="dashboard/dashboard_area.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard Área</span>
+                    </li>
+                    <li class="menu-item" data-link="not-found.html">
+                        <i class="fas fa-box"></i>
+                        <span>Tabela Produto</span>
+                    </li>
+                    <li class="menu-item" data-link="not-found.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Dashboard Produto</span>
+                    </li>
+                    <li class="menu-item" data-link="not-found.html">
+                        <i class="fas fa-trophy"></i>
+                        <span>Ranking Área</span>
+                    </li>
+                    <li class="menu-item" data-link="not-found.html">
+                        <i class="fas fa-medal"></i>
+                        <span>Ranking Produto</span>
+                    </li>
+                </ul>
+            </nav>
+        
+        <!-- Conteúdo principal -->
+        <main>
+          
+
+            <!-- Filtros -->
+            <section class="filters">
+                <div class="filter-group">
+                    <label for="area-filter">Área:</label>
+                    <select id="area-filter">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="subarea-filter">Subárea:</label>
+                    <select id="subarea-filter">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="natureza-filter">Natureza:</label>
+                    <select id="natureza-filter">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="formato-filter">Formato:</label>
+                    <select id="formato-filter">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="portfolio-filter">Portfólio:</label>
+                    <select id="portfolio-filter">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <button id="clear-all-filters" class="clear-all-filters">Limpar Todos os Filtros</button>
+            </section>
+
+            <!-- Gráficos -->
+            <section class="charts">
+                <!-- Linha Superior -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h2 class="chart-title">Área</h2>
+                        <canvas id="chart-area"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h2 class="chart-title">Subárea</h2>
+                        <canvas id="chart-subarea"></canvas>
+                    </div>
+                </div>
+            
+                <!-- Linha Inferior -->
+                <div class="charts-row">
+                      <div class="chart-card">
+                        <h2 class="chart-title">Portfólio</h2>
+                        <canvas id="chart-portfolio"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h2 class="chart-title">Natureza</h2>
+                        <canvas id="chart-natureza"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h2 class="chart-title">Formato</h2>
+                        <canvas id="chart-contratacao"></canvas>
+                    </div>
+                  
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard_area_scripts.js"></script>
+</body>
+</html>
